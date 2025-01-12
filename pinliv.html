@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Firma Închiriere Automacarale</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+/* Header */
+.header {
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  text-align: center;
+}
+
+.header img {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Layout pentru categorii */
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.section {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #f9f9f9;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.section p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Contact Buttons */
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.contact-buttons a {
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.contact-buttons img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+/* Galerie */
+.gallery-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.gallery-slides {
+  display: none;
+}
+
+.gallery-slides img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.gallery-description {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 3px;
+  user-select: none;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer .footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer .footer-container div {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 14px;
+  margin: 5px 0 0;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .sections-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .section {
+    flex: 1 1 calc(33% - 40px);
+    max-width: calc(33% - 40px);
+  }
+
+  .footer .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .footer .footer-container div {
+    text-align: left;
+    margin-bottom: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <img src="pinliv-logo_nr.png" alt="Logo Firma">
+</div>
+
+<!-- Secțiuni grupate -->
+<div class="sections-container">
+  <!-- Secțiunea Contact -->
+  <div class="section" id="contact">
+    <h2>Contact</h2>
+    <div class="contact-buttons">
+      <a href="tel:0768953488" class="call-btn">
+        <img src="telefon.png" alt="Sună acum">
+      </a>
+      <a href="mailto:pinliv27@gmail.com" class="email-btn">
+        <img src="mail.png" alt="Trimite Email">
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100069000272094&locale=ro_RO" target="_blank" class="facebook-btn">
+        <img src="facebook.png" alt="Pagina Facebook">
+      </a>
+    </div>
+  </div>
+
+  <!-- Secțiunea Galerie -->
+  <div class="section" id="galerie">
+    <h2>Galerie</h2>
+    <div class="gallery-container">
+      <!--<div class="gallery-slides">
+        <video controls>
+          <source src="video2.mp4" type="video/mp4">
+          Browserul tău nu suportă elementul video.
+        </video>
+      </div>-->
+      <div class="gallery-slides">
+        <img src="poza1.jpeg" alt="Imagine 1">
+      </div>
+      <div class="gallery-slides">
+        <img src="poza2.jpeg" alt="Imagine 2">
+      </div>
+      <div class="gallery-slides">
+        <img src="poza3.jpeg" alt="Imagine 3">
+      </div>
+      <div class="gallery-slides">
+        <img src="poza4.jpeg" alt="Imagine 3">
+      </div>
+      <div class="gallery-slides">
+        <img src="poza5.jpeg" alt="Imagine 3">
+      </div>
+      <div class="gallery-slides">
+        <img src="poza6.jpeg" alt="Imagine 3">
+      </div>
+      <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+      <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+  </div>
+
+  <!-- Secțiunea Descriere -->
+  <div class="section" id="descriere">
+    <h2>Descriere</h2>
+    <p>Oferim spre închiriere automacara LIEBHERR, 25tone, lungime braț 26m + 8m braț suplimentar.Programul de lucru este non-stop,în weekend-uri și în timpul nopții, atât in județ cât și în afara județului.Prețul este discutabil, în funcție de perioada de lucru.</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-container">
+    <div>
+      <h3>Contact</h3>
+      <p>PINLIV</p>
+      <p>jud. Vâlcea, Râmnicu Vâlcea</p>
+      <p>Email: pinliv27@gmail.com</p>
+      <p>Telefon: 0768953488</p>
+    </div>
+    <div>
+      <p>&copy; 2025 PINLIV. Toate drepturile rezervate.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function changeSlide(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  let slides = document.getElementsByClassName("gallery-slides");
+  if (n > slides.length) {slideIndex = 1} 
+  if (n < 1) {slideIndex = slides.length}
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slides[slideIndex-1].style.display = "block";  
+}
+</script>
+
+</body>
+</html>
