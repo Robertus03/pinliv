@@ -3,7 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
-<title>Inchiriere macara automacara</title>
+<meta name="description" content="Închiriere automacara LIEBHERR de 25 tone în județul Vâlcea. Servicii non-stop, prețuri flexibile, disponibile și în weekend.">
+<title>Închiriere macara automacara</title>
 <style>
 body {
   margin: 0;
@@ -123,6 +124,20 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
 /* Footer */
 .footer {
   background-color: #333;
@@ -205,39 +220,34 @@ body {
   <div class="section" id="galerie">
     <h2>Galerie</h2>
     <div class="gallery-container">
-      <!--<div class="gallery-slides">
-        <video controls>
-          <source src="video2.mp4" type="video/mp4">
-          Browserul tău nu suportă elementul video.
-        </video>
-      </div>-->
       <div class="gallery-slides">
-        <img src="poza1.jpeg" alt="Imagine 1">
+        <img src="poza1.jpeg" alt="Automacara în acțiune - poza 1">
       </div>
       <div class="gallery-slides">
-        <img src="poza2.jpeg" alt="Imagine 2">
+        <img src="poza2.jpeg" alt="Automacara în acțiune - poza 2">
       </div>
       <div class="gallery-slides">
-        <img src="poza3.jpeg" alt="Imagine 3">
+        <img src="poza3.jpeg" alt="Automacara în acțiune - poza 3">
       </div>
       <div class="gallery-slides">
-        <img src="poza4.jpeg" alt="Imagine 3">
-      </div>
-      <div class="gallery-slides">
-        <img src="poza5.jpeg" alt="Imagine 3">
-      </div>
-      <div class="gallery-slides">
-        <img src="poza6.jpeg" alt="Imagine 3">
+        <img src="poza4.jpeg" alt="Automacara în acțiune - poza 4">
       </div>
       <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
       <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+    <div style="text-align:center; margin-top: 10px;">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+      <span class="dot" onclick="currentSlide(4)"></span> 
     </div>
   </div>
 
   <!-- Secțiunea Descriere -->
   <div class="section" id="descriere">
-    <h2>Descriere</h2>
-    <p>Oferim spre închiriere automacara LIEBHERR, 25tone, lungime braț 26m + 8m braț suplimentar.Programul de lucru este non-stop,în weekend-uri și în timpul nopții, atât in județ cât și în afara județului.Prețul este discutabil, în funcție de perioada de lucru.</p>
+    <h2>Servicii</h2>
+    <p>Oferim spre închiriere automacara LIEBHERR, 25tone, lungime braț 26m + 8m braț suplimentar. Programul de lucru este non-stop, în weekend-uri și în timpul nopții, atât în județ, cât și în afara județului. Prețul este discutabil, în funcție de perioada de lucru.</p>
+    <p>Locație: <a href="https://www.google.com/maps/place/PinLiv+Prompt/@45.1141812,24.3828672,12z/data=!4m6!3m5!1s0x41008d214cbc3e61:0xba1b94f896aed656!8m2!3d45.1028002!4d24.3517972!16s%2Fg%2F11wx__rbg1?authuser=3&entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Vezi pe hartă</a></p>
   </div>
 </div>
 
@@ -250,6 +260,7 @@ body {
       <p>jud. Vâlcea, Râmnicu Vâlcea</p>
       <p>Email: pinliv27@gmail.com</p>
       <p>Telefon: 0768953488</p>
+      <p>Locație: <a href="https://www.google.com/maps/place/PinLiv+Prompt/@45.1141812,24.3828672,12z/data=!4m6!3m5!1s0x41008d214cbc3e61:0xba1b94f896aed656!8m2!3d45.1028002!4d24.3517972!16s%2Fg%2F11wx__rbg1?authuser=3&entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Vezi pe hartă</a></p>
     </div>
     <div>
       <p>&copy; 2025 PINLIV. Toate drepturile rezervate.</p>
@@ -265,16 +276,26 @@ function changeSlide(n) {
   showSlides(slideIndex += n);
 }
 
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
 function showSlides(n) {
   let slides = document.getElementsByClassName("gallery-slides");
+  let dots = document.getElementsByClassName("dot");
   if (n > slides.length) {slideIndex = 1} 
   if (n < 1) {slideIndex = slides.length}
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";  
   }
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
   slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
 }
 </script>
 
 </body>
 </html>
+
