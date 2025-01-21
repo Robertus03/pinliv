@@ -12,6 +12,44 @@ body {
   background-color: #ffffff;
 }
 
+/* Videoclip pentru desktop */
+.video-desktop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Videoclipul este în spatele conținutului */
+}
+
+/* Videoclip pentru mobil */
+.video-mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Videoclipul este în spatele conținutului */
+}
+
+/* Afișare videoclip pentru desktop */
+@media (min-width: 768px) {
+  .video-desktop {
+    display: block;
+  }
+}
+
+/* Afișare videoclip pentru mobil */
+@media (max-width: 767px) {
+  .video-mobile {
+    display: block;
+  }
+}
+
 /* Header */
 .header {
   background-color: #6e6b6b;
@@ -36,7 +74,7 @@ body {
 .section {
   width: 100%;
   max-width: 1000px;
-  background-color: #f9f9f9;
+  background-color: rgba(255, 255, 255, 0.8); /* Fundal semi-transparent pentru vizibilitate */
   margin: 20px 0;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -192,6 +230,18 @@ body {
 </style>
 </head>
 <body>
+
+<!-- Videoclip pentru desktop -->
+<video autoplay muted loop class="video-desktop">
+  <source src="video1.mov" type="video/mp4">
+  Browserul tău nu suportă videoclipuri HTML5.
+</video>
+
+<!-- Videoclip pentru mobil -->
+<video autoplay muted loop class="video-mobile">
+  <source src="video1.mov" type="video/mp4">
+  Browserul tău nu suportă videoclipuri HTML5.
+</video>
 
 <!-- Header -->
 <div class="header">
