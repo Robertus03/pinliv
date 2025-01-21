@@ -10,6 +10,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #ffffff;
+  scroll-behavior: smooth;
 }
 
 /* Videoclip pentru desktop */
@@ -21,7 +22,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* Videoclipul este în spatele conținutului */
+  z-index: -1;
 }
 
 /* Videoclip pentru mobil */
@@ -33,19 +34,17 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* Videoclipul este în spatele conținutului */
-  background: url('fallback-image.jpg') no-repeat center center; /* Imagine fallback */
+  z-index: -1;
+  background: url('fallback-image.jpg') no-repeat center center;
   background-size: cover;
 }
 
-/* Afișare videoclip pentru desktop */
 @media (min-width: 768px) {
   .video-desktop {
     display: block;
   }
 }
 
-/* Afișare videoclip pentru mobil */
 @media (max-width: 767px) {
   .video-mobile {
     display: block;
@@ -54,11 +53,14 @@ body {
 
 /* Header */
 .header {
-  background: linear-gradient(135deg, #6e6b6b, #474545);
+  background: linear-gradient(90deg, #a32020, #646060);
   color: white;
   padding: 20px;
   text-align: center;
   position: relative;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .header img {
@@ -79,7 +81,7 @@ body {
 .section {
   width: 100%;
   max-width: 1000px;
-  background-color: rgba(255, 255, 255, 0.8); /* Fundal semi-transparent pentru vizibilitate */
+  background-color: rgba(255, 255, 255, 0.8);
   margin: 20px 0;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -98,23 +100,44 @@ body {
   color: #555;
 }
 
-/* Contact Buttons */
+/* Contact Section */
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
 .contact-buttons {
   display: flex;
   justify-content: center;
   gap: 20px;
+  margin-top: 10px;
 }
 
 .contact-buttons a {
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #adadad;
+  box-shadow: 0 2px 5px rgba(170, 170, 170, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-buttons a:hover {
+  transform: scale(1.1);
+  background-color: #a32020;
 }
 
 .contact-buttons img {
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
+  width: 55px;
+  height: 55px;
 }
 
 /* Galerie */
@@ -132,6 +155,10 @@ body {
 .gallery-slides img {
   width: 100%;
   border-radius: 10px;
+}
+
+.gallery-slides.active {
+  display: block;
 }
 
 .gallery-description {
@@ -205,7 +232,6 @@ body {
   margin: 5px 0 0;
 }
 
-/* Responsive Design */
 @media (min-width: 768px) {
   .sections-container {
     flex-direction: row;
@@ -233,6 +259,30 @@ body {
   }
 }
 </style>
+<script>
+// Galerie slideshow
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function changeSlide(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let slides = document.querySelectorAll(".gallery-slides");
+  let dots = document.querySelectorAll(".dot");
+  if (n > slides.length) {slideIndex = 1} 
+  if (n < 1) {slideIndex = slides.length}
+  slides.forEach(slide => slide.classList.remove("active"));
+  dots.forEach(dot => dot.classList.remove("active"));
+  slides[slideIndex - 1].classList.add("active");
+  dots[slideIndex - 1].classList.add("active");
+}
+</script>
 </head>
 <body>
 
@@ -251,6 +301,7 @@ body {
 <!-- Header -->
 <div class="header">
   <img src="pinliv-logo_nr.png" alt="Logo Firma">
+  <p class="slogan">Închiriere automacara LIEBHERR</p>
 </div>
 
 <!-- Secțiuni grupate -->
@@ -259,13 +310,13 @@ body {
   <div class="section" id="contact">
     <h2>Contact</h2>
     <div class="contact-buttons">
-      <a href="tel:0768953488" class="call-btn">
+      <a href="tel:0768953488">
         <img src="telefon.png" alt="Sună acum">
       </a>
-      <a href="mailto:pinliv27@gmail.com" class="email-btn">
+      <a href="mailto:pinliv27@gmail.com">
         <img src="mail.png" alt="Trimite Email">
       </a>
-      <a href="https://www.facebook.com/profile.php?id=100069000272094&locale=ro_RO" target="_blank" class="facebook-btn">
+      <a href="https://www.facebook.com/profile.php?id=100069000272094&locale=ro_RO" target="_blank">
         <img src="facebook.png" alt="Pagina Facebook">
       </a>
     </div>
@@ -275,7 +326,7 @@ body {
   <div class="section" id="galerie">
     <h2>Galerie</h2>
     <div class="gallery-container">
-      <div class="gallery-slides">
+      <div class="gallery-slides active">
         <img src="poza1.jpeg" alt="Automacara în acțiune - poza 1">
       </div>
       <div class="gallery-slides">
@@ -291,10 +342,10 @@ body {
       <a class="next" onclick="changeSlide(1)">&#10095;</a>
     </div>
     <div style="text-align:center; margin-top: 10px;">
-      <span class="dot" onclick="currentSlide(1)"></span> 
-      <span class="dot" onclick="currentSlide(2)"></span> 
-      <span class="dot" onclick="currentSlide(3)"></span> 
-      <span class="dot" onclick="currentSlide(4)"></span> 
+      <span class="dot active" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
     </div>
   </div>
 
@@ -302,7 +353,7 @@ body {
   <div class="section" id="descriere">
     <h2>Servicii</h2>
     <p>Oferim spre închiriere automacara LIEBHERR, 25tone, lungime braț 26m + 8m braț suplimentar. Programul de lucru este non-stop, în weekend-uri și în timpul nopții, atât în județ, cât și în afara județului. Prețul este discutabil, în funcție de perioada de lucru.</p>
-    <p>Locație: <a href="https://www.google.com/maps/place/PinLiv+Prompt/@45.1141812,24.3828672,12z/data=!4m6!3m5!1s0x41008d214cbc3e61:0xba1b94f896aed656!8m2!3d45.1028002!4d24.3517972!16s%2Fg%2F11wx__rbg1?authuser=3&entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Vezi pe hartă</a></p>
+    <p>Locație: <a href="https://www.google.com/maps/place/PinLiv+Prompt/@45.1141812,24.3828672,12z/data=!4m6!3m5!1s0x41008d214cbc3e61:0xba1b94f896aed656!8m2!3d45.1028002!4d24.3517972!16s%2Fg%2F11wx__rbg1?authuser=3&entry=ttu" target="_blank">Vezi pe hartă</a></p>
   </div>
 </div>
 
@@ -315,7 +366,7 @@ body {
       <p>jud. Vâlcea, Râmnicu Vâlcea</p>
       <p>Email: pinliv27@gmail.com</p>
       <p>Telefon: 0768953488</p>
-      <p>Locație: <a href="https://www.google.com/maps/place/PinLiv+Prompt/@45.1141812,24.3828672,12z/data=!4m6!3m5!1s0x41008d214cbc3e61:0xba1b94f896aed656!8m2!3d45.1028002!4d24.3517972!16s%2Fg%2F11wx__rbg1?authuser=3&entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Vezi pe hartă</a></p>
+      <p>Locație: <a href="https://www.google.com/maps/place/PinLiv+Prompt/@45.1141812,24.3828672,12z/data=!4m6!3m5!1s0x41008d214cbc3e61:0xba1b94f896aed656!8m2!3d45.1028002!4d24.3517972!16s%2Fg%2F11wx__rbg1?authuser=3&entry=ttu" target="_blank">Vezi pe hartă</a></p>
     </div>
     <div>
       <p>&copy; 2025 PINLIV. Toate drepturile rezervate.</p>
@@ -323,33 +374,6 @@ body {
   </div>
 </div>
 
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function changeSlide(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let slides = document.getElementsByClassName("gallery-slides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1} 
-  if (n < 1) {slideIndex = slides.length}
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-</script>
-
 </body>
 </html>
+
