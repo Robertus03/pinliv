@@ -260,28 +260,46 @@ body {
 }
 </style>
 <script>
-// Galerie slideshow
-let slideIndex = 1;
-showSlides(slideIndex);
+document.addEventListener("DOMContentLoaded", function() {
+  let slideIndex = 1;
+  showSlides(slideIndex);
 
-function changeSlide(n) {
-  showSlides(slideIndex += n);
-}
+  function changeSlide(n) {
+    showSlides(slideIndex += n);
+  }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
 
-function showSlides(n) {
-  let slides = document.querySelectorAll(".gallery-slides");
-  let dots = document.querySelectorAll(".dot");
-  if (n > slides.length) {slideIndex = 1} 
-  if (n < 1) {slideIndex = slides.length}
-  slides.forEach(slide => slide.classList.remove("active"));
-  dots.forEach(dot => dot.classList.remove("active"));
-  slides[slideIndex - 1].classList.add("active");
-  dots[slideIndex - 1].classList.add("active");
-}
+  function showSlides(n) {
+    let slides = document.querySelectorAll(".gallery-slides");
+    let dots = document.querySelectorAll(".dot");
+
+    if (slides.length === 0 || dots.length === 0) {
+      console.error("Galeria nu contine suficiente elemente.");
+      return;
+    }
+
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
+
+    slides.forEach(slide => slide.classList.remove("active"));
+    dots.forEach(dot => dot.classList.remove("active"));
+
+    if (slides[slideIndex - 1]) {
+      slides[slideIndex - 1].classList.add("active");
+    }
+
+    if (dots[slideIndex - 1]) {
+      dots[slideIndex - 1].classList.add("active");
+    }
+  }
+
+  // Adaugam functiile pentru controale
+  window.changeSlide = changeSlide;
+  window.currentSlide = currentSlide;
+});
 </script>
 </head>
 <body>
@@ -370,7 +388,6 @@ function showSlides(n) {
       <p>jud. Vâlcea, Râmnicu Vâlcea</p>
       <p>Email: pinliv27@gmail.com</p>
       <p>Telefon: 0768953488</p>
-      
     </div>
     <div>
       <p>&copy; 2025 PINLIV. Toate drepturile rezervate.</p>
