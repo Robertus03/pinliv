@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
@@ -103,64 +104,13 @@ a:hover {
 }
 
 .hero__logo--mobile {
-  display: none;
-  width: 120px;
-  margin: 0 auto 1rem;
-  padding: 0;
-  border-radius: 12px;
-  background: transparent;
-  border: none;
-}
+    display: block;
+    padding: 0;
+    width: 200px;
+    margin: 0 auto 0.5rem;
+    border-radius: 12px;
+  }
 
-
-.hero__logo--desktop {
-  display: block;
-  width: 320px;
-  position: fixed;
-  top: 60px;
-  right: 40px;
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  z-index: 5;
-}
-
-.hero__logo--mobile {
-  display: none;
-  width: 120px;
-  margin: 0 auto 1rem;
-  padding: 0;
-  border-radius: 12px;
-  background: transparent;
-  border: none;
-}
-
-
-.hero__logo--desktop {
-  display: block;
-  width: 320px;
-  position: fixed;
-  top: 60px;
-  right: 30px;
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  z-index: 5;
-}
-
-.hero__logo--mobile {
-  display: none;
-  width: 120px;
-  margin: 0 auto 1rem;
-  padding: 0;
-  border-radius: 12px;
-  background: transparent;
-  border: none;
-}
 
 .hero__tag {
   text-transform: uppercase;
@@ -505,12 +455,14 @@ main {
     pointer-events: none;
   }
 
-  .hero__logo--mobile {
+  /*.hero__logo--mobile {
     display: block;
-    width: 140px;
-    margin: 0 auto 1rem;
+    padding: 0;
+    width: 200px;
+    margin: 0 auto 0.5rem;
+    border-radius: 12px;
   }
-}
+}*/
 
 @media (max-width: 960px) {
   .contact-gallery-grid {
@@ -541,9 +493,6 @@ main {
     padding: 2.5rem 2rem 2.5rem;
   }
 
-  .hero__logo--mobile {
-    width: 110px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -556,7 +505,6 @@ main {
     flex-direction: column;
   }
 
-  .hero__logo--mobile {
-    width: 90px;
-  }
+  
+}
 }
