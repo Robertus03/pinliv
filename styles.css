@@ -458,7 +458,7 @@ main {
   .hero__logo--mobile {
     display: block;
     padding: 0;
-    width: 200px;
+    width: 300px;
     margin: 0 auto 0.5rem;
     border-radius: 12px;
   }
